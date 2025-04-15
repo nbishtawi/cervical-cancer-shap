@@ -1,37 +1,43 @@
 # Cervical Cancer Biopsy Prediction with XGBoost and SHAP
 
-## 📋 Overview
+## Overview
 
-This project predicts the likelihood of a cervical cancer biopsy using patient features from the UCI Cervical Cancer Risk Factors dataset. The focus is on handling class imbalance using SMOTE and interpreting model decisions with SHAP.
-
----
-
-## 🔬 Dataset
-
-- **Source**: [UCI Machine Learning Repository – Cervical Cancer Risk Factors](https://archive.ics.uci.edu/ml/datasets/Cervical+Cancer+%28Risk+Factors%29)
-- **Target variable**: `Biopsy` (binary: 1 = Biopsy performed, 0 = not performed)
-- **Features**: Demographics, behavioral, and clinical screening test results
+This project aims to predict the likelihood of a cervical cancer biopsy using clinical, behavioral, and demographic data. We use an XGBoost classifier with SMOTE for class imbalance handling and SHAP for model interpretability. The dataset comes from the UCI Machine Learning Repository.
 
 ---
 
-## ⚙️ Methods
+## Dataset
 
-- **Model**: XGBoost Classifier
+- **Source**: [UCI Cervical Cancer Risk Factors](https://archive.ics.uci.edu/ml/datasets/Cervical+Cancer+%28Risk+Factors%29)
+- **Target Variable**: `Biopsy` (binary: 1 = Biopsy performed, 0 = Not performed)
+- **Features**: Patient-reported behaviors, contraceptive use, STD history, and prior screenings
+
+---
+
+## Methods
+
+- **Model**: XGBoost Classifier (`xgboost`)
 - **Preprocessing**:
-  - Missing value imputation
-  - Label encoding for binary variables
-  - Train-test split (stratified)
-- **Class imbalance handling**: SMOTE (Synthetic Minority Oversampling Technique)
-- **Model interpretability**: SHAP (SHapley Additive exPlanations)
+  - Excluded highly sparse or outcome-related columns (`STDs: Time since first diagnosis`, `Hinselmann`, etc.)
+  - Imputed missing values using:
+    - **Mode** for binary features (e.g., STDs, screenings)
+    - **Mean** for continuous features (e.g., number of pregnancies)
+- **Class Imbalance Handling**:  
+  - Applied `SMOTE` to oversample the minority class to a 0.7 ratio
+- **Train-Test Split**: 70-30 shuffle
 
 ---
 
-## 📈 Outputs
+## Outputs
 
-- Model accuracy and F1-score
-- SHAP summary plot for feature importance
+- **Classification Metrics**: Accuracy, Precision, Recall, F1 Score, AUC
+- **SHAP Summary Plot** (Beeswarm): Shows the global importance of features  
+- **SHAP Waterfall Plot**: Shows how individual features influenced a single prediction
 
-All analysis is in [`scripts/cervical_cancer_xgboost_shap.py`](scripts/cervical_cancer_xgboost_shap.py).
+Plots are saved to the `figures/` folder:
+- `figures/shap_beeswarm.png`
+- `figures/shap_waterfall_sample.png`
+
 
 ---
 
