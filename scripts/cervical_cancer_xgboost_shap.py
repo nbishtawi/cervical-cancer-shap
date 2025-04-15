@@ -29,10 +29,6 @@ columns_to_exclude = [
 ]
 df_cleaned = df.drop(columns=columns_to_exclude)
 
-# Split into features and target
-X = df_cleaned.drop("Biopsy", axis=1)
-y = df_cleaned["Biopsy"]
-
 # Identify boolean and continuous features for imputation
 boolean_features_all = [
     'Smokes',
@@ -73,6 +69,10 @@ for col in boolean_to_impute:
 for col in continuous_to_impute:
     mean = df_cleaned[col].mean(skipna=True)
     df_cleaned[col] = df_cleaned[col].fillna(mean)
+
+# Split into features and target
+X = df_cleaned.drop("Biopsy", axis=1)
+y = df_cleaned["Biopsy"]
 
 # Train-test split
 X_train, X_test, y_train, y_test = train_test_split(
