@@ -1,0 +1,6 @@
+# Ignore data, outputs, and system files
+*.csv
+*.xlsx
+*.ipynb_checkpoints
+.DS_Store
+.env
