@@ -9,6 +9,8 @@ from xgboost import XGBClassifier
 from imblearn.over_sampling import SMOTE
 import shap
 import random
+import matplotlib.pyplot as plt
+import os
 
 # Load dataset
 df = pd.read_csv("risk_factors_cervical_cancer.csv")
