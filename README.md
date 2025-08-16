@@ -41,7 +41,7 @@ Plots are saved to the `figures/` folder:
 
 ---
 
-## 🔒 Data Privacy Note
+## Data Privacy Note
 
 No sensitive data is included in this repository. The dataset is open and publicly available from the UCI repository.
 
