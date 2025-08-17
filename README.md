@@ -41,6 +41,21 @@ Plots are saved to the `figures/` folder:
 
 ---
 
+## Repository Structure
+```
+cervical-cancer-shap/
+├── figures/
+│ ├── shap_beeswarm.png # SHAP beeswarm plot
+│ └── shap_waterfall_sample.png # Example SHAP waterfall plot
+├── scripts/
+│ └── cervical_cancer_xgboost_shap.py # Main script for training model and generating SHAP explanations
+├── requirements.txt # Python dependencies
+├── README.md # Project documentation
+└── .gitignore # Git ignore file
+```
+
+---
+
 ## Data Privacy Note
 
 No sensitive data is included in this repository. The dataset is open and publicly available from the UCI repository.
